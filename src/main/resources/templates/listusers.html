@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>用户管理</title>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <h5>用户管理</h5>
+    </div>
+    <div class="row">
+        <form class="form-row" th:action="@{/listusers}" method="post">
+            <div class="form-group">
+                <label>关键字</label>
+                <input type="text" placeholder="请输入关键字进行搜索" name="kw">
+            </div>
+            <div class="form-group">
+                <input type="submit" class="button" th:value="搜索">
+            </div>
+        </form>
+    </div>
+    <div class="row">
+        <table class="table" width="100%">
+            <head>
+                <tr>
+                    <th>序号</th>
+                    <th>账号</th>
+                    <th>姓名</th>
+                    <th>电话号码</th>
+                    <th>Email</th>
+                </tr>
+            </head>
+            <tbody>
+            <tr th:each="u : ${pages.content}">
+                <td th:text="${uStat.count}"></td>
+                <td th:text="${u.account}"></td>
+                <td th:text="${u.name}"></td>
+                <td th:text="${u.mobile}"></td>
+                <td th:text="${u.email}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>
